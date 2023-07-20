@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-
+import ProductCard from '../components/productcard';
  const Homepage = () => {
 
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    // Make a GET request to the API endpoint
-    axios.get('/products')
+    // Make a GET request to the API endpoint using fetch
+    fetch('http://localhost:5000/products')
       .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
         // Update the 'products' state with the response data
-        setProducts(response.data);
+        setProducts(data);
       })
       .catch(error => {
-        console.error(error);
+        console.error('Fetch error:', error);
       });
   }, []);
 
   return (
     <div>
       <h1>Homepage</h1>
-      <ul>
-        {products.map(product => (
-          <li key={product.id}>
-            {product.name}
-          </li>
-        )
-
-      )}</ul>
+      <ProductCard products={products}></ProductCard>
     </div>
   )
 }

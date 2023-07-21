@@ -1,0 +1,80 @@
+.navContainer {
+  height: 100px;
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.homeCart {
+  background-color: bisque;
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homeCart div:first-child {
+  font-size: 45px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.userLogin {
+  background-color: bisque;
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.categories {
+  font-weight: bold;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  cursor: pointer;
+  
+}
+.categories:hover{
+  /* color: rgb(65, 64, 64); */
+}
+.subCategories {
+  display: flex; /* Show the subCategories when hovering on the categories */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: bisque;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 100%; /* Position the subCategories below the categories */
+  left: 0; /* Align the subCategories with the left edge of the categories */
+  width: 100%;
+  height: 100px;
+  /* transform: translateY(-30%); Start with translateY to hide subCategories */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.4s ease;
+  
+  
+}
+
+
+.categories:hover .subCategories {
+
+  transform: translateY(0); /* Show subCategories using translateY */
+  opacity: 1;
+  pointer-events: auto;
+
+}
+
+.subcategory:hover{
+  color: rgb(90, 139, 189);
+}
+
+

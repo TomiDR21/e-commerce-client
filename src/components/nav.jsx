@@ -1,0 +1,40 @@
+import React, { useState } from "react";
+import styles from "./css/nav.module.css";
+import Subcategories from "./subcategories"
+
+
+const Nav = () => {
+  const [showSubcategories, setShowSubcategories] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowSubcategories(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowSubcategories(false);
+  };
+
+  return (
+    <div className={styles.navContainer}>
+      <div className={styles.homeCart}>
+        <div>E-Commerce</div>
+        <div>Cart({})</div>
+      </div>
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={styles.categories}
+      >
+        <div>Categories</div>
+        <div className={styles.subCategories}>
+        {showSubcategories && <Subcategories/>}</div>
+      </div>
+      <div className={styles.userLogin}>
+        <div>Login</div>
+        <div>Sign up</div>
+      </div>
+    </div>
+  );
+};
+
+export default Nav;

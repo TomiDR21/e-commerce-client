@@ -30,8 +30,8 @@ const Nav = () => {
         {showSubcategories && <Subcategories/>}</div>
       </div>
       <div className={styles.userLogin}>
-        <div>Login</div>
-        <div>Sign up</div>
+        <a href="http://localhost:3000/login">Login</a>
+        <a href="http://localhost:3000/signup">Sign up</a>
       </div>
     </div>
   );

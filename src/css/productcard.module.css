@@ -30,9 +30,23 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     transition: ease-in 0.1s;
-    cursor: pointer;
+
     
   }
-  .productItem:hover{
-    transform: scale(1.02);
+ 
+
+  .productItem > .add, .remove{
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
   }
+
+  .productItem > .remove{
+background-color: rgb(238, 34, 34);
+  }
+
+  .productItem > .add{
+    background-color: rgb(10, 159, 80);
+      }

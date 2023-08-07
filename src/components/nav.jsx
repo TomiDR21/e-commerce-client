@@ -3,7 +3,7 @@ import styles from "./css/nav.module.css";
 import Subcategories from "./subcategories"
 
 
-const Nav = () => {
+const Nav = ({cartQuantity, setCartQuantity}) => {
   const [showSubcategories, setShowSubcategories] = useState(false);
 
   const handleMouseEnter = () => {
@@ -18,7 +18,7 @@ const Nav = () => {
     <div className={styles.navContainer}>
       <div className={styles.homeCart}>
         <div>E-Commerce</div>
-        <div>Cart({})</div>
+        <div>Cart({cartQuantity})</div>
       </div>
       <div
         onMouseEnter={handleMouseEnter}

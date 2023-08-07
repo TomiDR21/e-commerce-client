@@ -6,17 +6,22 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './pages/homepage';
 import SignUp from './pages/signup';
 import Login from './pages/login';
-// import CheckoutPage from './pages/CheckoutPage';
+import CartPage from './pages/cartpage';
+import SuccessPage from './pages/successpage';
 function App() {
   return (
     
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-    </Router>
+    <div className="App"> {/* Add the App class to the root div */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/CartPage" element={<CartPage />} />
+          <Route path="/successpage" element={<SuccessPage />} />
+        </Routes> 
+      </Router>
+    </div>
   );
 }
 

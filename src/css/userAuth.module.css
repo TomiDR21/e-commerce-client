@@ -1,0 +1,33 @@
+
+
+.formContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(94, 180, 180);
+    height: 40%;
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: auto;
+  }
+
+  .formContainer > div:nth-child(1){
+font-weight: bold;
+  }
+  
+  .formContainer > button {
+    margin-left: 60%;
+  }
+
+
+.formContainer > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .formContainer > div > label{
+margin-bottom: 10px;
+  }

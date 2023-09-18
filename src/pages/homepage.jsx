@@ -2,56 +2,36 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/productcard";
 import Nav from "../components/nav";
 import axios from "axios";
-const Homepage = () => {
+
+const Homepage = ({ cartQuantity, setCartQuantity, fetchCartItems }) => {
   const [products, setProducts] = useState([]);
-  const [cartQuantity, setCartQuantity] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  // CART--------------------------------------------------------
+  const handleAddToCart = (product_id, product_name) => {
+    console.log("product_id:", product_id);
+    console.log("product_name:", product_name);
 
-  const handleAddToCart = () => {
-    const { id } = products;
     const data = {
-      product_id: id,
-      quantity: cartQuantity + 1,
+      product_id,
+      product_name,
     };
 
     axios
-      .post("http://localhost:3000/cart", data)
+      .post("http://localhost:5000/cartitems", data)
       .then((response) => {
-        console.log("Item added to cart:", response.data);
+        console.log("Product added successfully:", response.data);
         setCartQuantity(cartQuantity + 1);
       })
       .catch((error) => {
-        console.error("Error adding item to cart:", error);
+        console.error("Error:", error.message);
       });
-    setCartQuantity(cartQuantity + 1);
   };
-
-  const handleRemoveFromCart = () => {
-    if (cartQuantity > 0) {
-      const { id } = products;
-      const data = {
-        product_id: id,
-        quantity: cartQuantity - 1,
-      };
-
-      axios
-        .post("http://localhost:3000/cart", data)
-        .then((response) => {
-          console.log("Item removed from cart:", response.data);
-          setCartQuantity(cartQuantity - 1);
-        })
-        .catch((error) => {
-          console.error("Error removing item from cart:", error);
-        });
-      setCartQuantity(cartQuantity - 1);
-    }
-  };
-
-  //PRODUCTS----------------------------------------------------------------
 
   useEffect(() => {
-    // Make a GET request to the API endpoint using fetch
+    fetchCartItems(setCartQuantity);
+  }, [fetchCartItems, setCartQuantity]);
+
+  useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((response) => {
         if (!response.ok) {
@@ -60,22 +40,22 @@ const Homepage = () => {
         return response.json();
       })
       .then((data) => {
-        // Update the 'products' state with the response data
         setProducts(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
       });
   }, []);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <Nav setCartQuantity={setCartQuantity} cartQuantity={cartQuantity}></Nav>
-      <ProductCard
-        products={products}
-        handleAddToCart={handleAddToCart}
-        handleRemoveFromCart={handleRemoveFromCart}
-      ></ProductCard>
+      <Nav setCartQuantity={setCartQuantity} cartQuantity={cartQuantity} />
+      <ProductCard products={products} handleAddToCart={handleAddToCart} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import styles from '../components/css/userAuth.module.css';
+import styles from '../css/userAuth.module.css';
 
 import React from 'react'
 

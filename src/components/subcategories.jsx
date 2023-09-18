@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./css/nav.module.css";
+import styles from "../css/nav.module.css";
 const Subcategories = () => {
-  const subcategories = ["Subcategory 1", "Subcategory 2", "Subcategory 3"];
+  const subcategories = ["-Smartphones", "-Tablets", "-Consoles", "-Peripherals", "-TV's", "-Computers", "-Cameras", "-Kitchen", "-Others"];
 
   return (
     <div>

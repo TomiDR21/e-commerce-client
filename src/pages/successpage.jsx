@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../components/css/successpage.module.css";
+import styles from "../css/successpage.module.css";
 const SuccessPage = () => {
   return (
     <div className={styles.successContainer}>

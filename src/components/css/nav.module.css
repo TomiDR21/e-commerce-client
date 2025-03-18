@@ -16,6 +16,13 @@
   align-items: center;
 }
 
+.homeCart a {
+  background-color: bisque;
+font-size: 45px;
+text-decoration: none;
+}
+
+
 .homeCart div:first-child {
   font-size: 45px;
   font-weight: bold;

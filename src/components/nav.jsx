@@ -17,7 +17,7 @@ const Nav = () => {
   return (
     <div className={styles.navContainer}>
       <div className={styles.homeCart}>
-        <div>E-Commerce</div>
+        <a href="http://localhost:3000/">E-Commerce</a>
         <div>Cart({})</div>
       </div>
       <div

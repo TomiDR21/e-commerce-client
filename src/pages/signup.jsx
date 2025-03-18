@@ -1,21 +1,27 @@
 import styles from '../components/css/userAuth.module.css';
-
+import Nav from '../components/nav'
 import React from 'react'
 
- const SignUp = () => {
+const SignUp = () => {
   return (
     
-    <form className={styles.formContainer}>
+    <><Nav></Nav>
+    <div className={styles.wrapper}>
+      
+      <form className={styles.formContainer}>
         <div>Sign up</div>
         <div>
-        <label htmlFor="">Enter username</label>
-        <input type="text" /></div>
+          <label>Enter username</label>
+          <input type="text" />
+        </div>
         <div>
-        <label htmlFor="">Enter password</label>
-        <input type="password" /></div>
+          <label>Enter password</label>
+          <input type="password" />
+        </div>
+        <button>Sign up</button>
+      </form>
+    </div></>
+  );
+};
 
-
-    </form>
-  )
-}
 export default SignUp

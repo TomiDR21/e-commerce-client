@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     
   }
@@ -15,7 +16,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Creates three columns */
     gap: 50px; /* Adjust this value to add spacing between columns */
-    
+    min-height: 500px;
     padding: 10px;
   }
   

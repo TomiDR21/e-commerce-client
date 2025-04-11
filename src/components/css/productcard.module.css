@@ -1,39 +1,154 @@
-/* productcard.module.css */
-
 .productCardContainer {
-    background-color: rgb(83, 99, 99);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background-color: #fafafa;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
 
-    
+.productGrid {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive como Cart */
+  gap: 30px;
+
+}
+
+.productItem {
+  height: 400px;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .productGrid {
-    width: 80%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates three columns */
-    gap: 50px; /* Adjust this value to add spacing between columns */
-    min-height: 500px;
-    padding: 10px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .productItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    transition: ease-in 0.1s;
-    cursor: pointer;
-    
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.productItem:hover {
+  transform: scale(1.02) translateZ(0) ;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.productItem img {
+  max-height: 120px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.prevButton,
+.nextButton {
+
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: #6366f1;
+}
+
+.prevButton:disabled,
+.nextButton:disabled {
+  background-color: #c7c7c7; /* gris apagado */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.addButton {
+  background-color: #4f46e5; /* Indigo-600 */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 10px;
+}
+
+.addButton:hover {
+  background-color: #6366f1; /* Indigo-500 */
+  transform: scale(1.02);
+}
+
+.addButton:active {
+  transform: scale(0.98);
+}
+.searchInput {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-bottom: 30px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+}
+
+.searchInput:focus {
+  border: 2px solid #4f46e5;
+}
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* o lo que necesites */
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #4f46e5; /* Color del borde superior */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  .productItem:hover{
-    transform: scale(1.02);
-  }
+}

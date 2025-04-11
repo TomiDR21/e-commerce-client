@@ -1,0 +1,115 @@
+.cartContainer {
+  background-color: #fafafa;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.cartList {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive */
+  gap: 30px;
+  padding: 20px;
+}
+
+.cartItem {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.cartItem:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cartItem img {
+  max-height: 120px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.prevButton,
+.nextButton {
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: #6366f1;
+}
+
+a[href="/purchase"] {
+  margin-top: 40px;
+  background-color: #3033d6 ;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+a[href="/purchase"]:hover {
+  background-color: #251a78;
+}
+
+.deleteButton {
+  margin-top: 10px;
+  background-color: #ef4444;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.deleteButton:hover {
+  background-color: #dc2626;
+}
+

@@ -75,3 +75,27 @@
     background-color: #6366f1;
   }
   
+
+  .spinnerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* o lo que necesites */
+  }
+  
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e0e0e0;
+    border-top: 5px solid #4f46e5; /* Color del borde superior */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

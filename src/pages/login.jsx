@@ -10,34 +10,48 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { login } = useContext(UserContext); // ✅ Get login function from context
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:5000/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier, password })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.message || 'Login failed');
-      } else {
-        login(data.user, data.token); // ✅ This updates UserContext and localStorage
-        alert('Login successful!');
-        navigate('/');
+    
+    // Set loading state immediately to true
+    setLoading(true);
+  
+    // Wait for 2 seconds before proceeding
+    setTimeout(async () => {
+      try {
+        const response = await fetch('http://localhost:5000/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ identifier, password })
+        });
+  
+        const data = await response.json();
+  
+        if (!response.ok) {
+          setError(data.message || 'Login failed');
+        } else {
+          login(data.user, data.token); // ✅ This updates UserContext and localStorage
+          navigate('/');
+        }
+      } catch (error) {
+        setError('An error occurred. Please try again.');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      setError('An error occurred. Please try again.');
-    }
+    }, 2000); // 2 seconds delay
   };
-
+  
   return (
     <>
       <Nav />
+      {loading ? (
+              <div className={styles.spinnerContainer}>
+                <div className={styles.spinner}></div>
+                <p>Signing in...</p>
+              </div>
+            ) : (
       <div className={styles.wrapper}>
         <form className={styles.formContainer} onSubmit={handleLogin}>
           <h2>Sign in</h2>
@@ -62,7 +76,7 @@ const Login = () => {
           </div>
           <button type="submit">Sign in</button>
         </form>
-      </div>
+      </div>)}
     </>
   );
 };

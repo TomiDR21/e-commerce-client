@@ -32,5 +32,5 @@ const UserProvider = ({ children }) => {
   );
 };
 
-// ✅ Explicitly export UserProvider as default
+
 export default UserProvider;

@@ -47,6 +47,11 @@ const ProductCard = ({ products, loading }) => {
     }
   };
 
+  const handleSearch = (e) => {
+    setCurrentPage(1)
+    setSearchTerm(e.target.value)
+  }
+
   return (
     <div className={styles.productCardContainer}>
       {loading ? (
@@ -61,7 +66,7 @@ const ProductCard = ({ products, loading }) => {
             type="text"
             placeholder="Search products..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearch}
           />
 
           <div key={animationKey} className={styles.productGrid}>
